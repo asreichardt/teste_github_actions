@@ -12,16 +12,12 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Login no Docker Hub
-        uses: docker/login-action@v2
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v4
         with:
-          username: ${{ secrets.DOCKER_HUB_NAME }}
-          password: ${{ secrets.DOCKER_HUB_PASS }}
-
-      - name: Build da imagem
-        run: |
-             docker buildx build -t ${{ secrets.DOCKER_HUB_NAME }}/teste_github_actions:latest --load .
-
-      - name: Push da imagem
-        run: 
-           docker push ${{ secrets.DOCKER_HUB_NAME }}/teste_github_actions:latest
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_NAME }}/teste_github_actions:latest
+          secrets: |
+            "username=${{ secrets.DOCKER_HUB_NAME }}"
+            "password=${{ secrets.DOCKER_HUB_PASS }}"
