@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_HUB_NAME }}/teste_github_actions:latest
+          tags:  adrianoreichardt/teste_github_actions:latest
