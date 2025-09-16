@@ -20,8 +20,8 @@ jobs:
 
       - name: Build da imagem
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_NAME }}/minha-app:latest .
+          docker build -t ${{ secrets.DOCKER_HUB_NAME }}/teste_github_actions:latest .
 
       - name: Push da imagem
         run: |
-          docker push ${{ secrets.DOCKER_HUB_NAME }}/minha-app:latest
+          docker push ${{ secrets.DOCKER_HUB_NAME }}/teste_github_actions:latest
